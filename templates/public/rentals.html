@@ -232,7 +232,7 @@
   }
   .pro-card:hover { transform: translateY(-6px); box-shadow: var(--card-outer-shadow-h); }
 
-  .pro-card-banner { height: 240px; width: 100%; border-radius: 32px 32px 0 0; position: relative; overflow: hidden; background: #1e293b; }
+  .pro-card-banner { height: 240px; width: 100%; border-radius: 32px 32px 0 0; position: relative; overflow: hidden; background:var(--chip-bg); }
   .pro-card-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
   .pro-card:hover .pro-card-img { transform: scale(1.04); }
 
@@ -464,7 +464,7 @@
 
   .gear-img-wrap {
     height: 200px; position: relative; overflow: hidden;
-    background: #0d0d0f;
+    background:var(--chip-bg);
   }
   .gear-img-wrap img {
     width: 100%; height: 100%; object-fit: cover;
@@ -1105,16 +1105,15 @@
   display:none;position:fixed;inset:0;z-index:200;
   background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);
   align-items:center;justify-content:center;padding:1rem;">
-  <div style="
-    background:#0e0e10;border:1px solid rgba(255,255,255,0.1);
-    border-radius:1.5rem;padding:2rem;width:100%;max-width:460px;
+  <div class="glass-panel" style="
+    background:var(--chip-bg); border-radius:1.5rem;padding:2rem;width:100%;max-width:460px;
     box-shadow:0 32px 80px rgba(0,0,0,0.7);position:relative;">
     <button onclick="closeReserveModal()" style="
       position:absolute;top:1rem;right:1rem;
       background:none;border:none;cursor:pointer;
       color:#849495;font-size:1.3rem;line-height:1;">✕</button>
 
-    <h3 id="modal-equip-name" style="color:#dce4e5;font-size:1.1rem;font-weight:800;margin-bottom:0.25rem;"></h3>
+    <h3 id="modal-equip-name" style="color:var(--text-main);font-size:1.1rem;font-weight:800;margin-bottom:0.25rem;"></h3>
     <p id="modal-equip-price" style="color:#00dbe9;font-size:0.85rem;font-weight:700;margin-bottom:1.5rem;"></p>
 
     <form id="reserve-form" onsubmit="submitReservation(event)" style="display:flex;flex-direction:column;gap:0.9rem;">
@@ -1125,15 +1124,15 @@
         <div>
           <label style="font-size:0.72rem;font-weight:700;color:#445a5c;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:0.35rem;">From Date</label>
           <input id="reserve-from" type="date" required style="
-            width:100%;background:#1a1a1c;border:1px solid rgba(255,255,255,0.1);
-            border-radius:0.6rem;padding:0.65rem 0.85rem;color:#dce4e5;
+            width:100%;background:var(--chip-bg);border:1px solid var(--border-color);
+            border-radius:0.6rem;padding:0.65rem 0.85rem;color:var(--text-main);
             font-family:inherit;font-size:0.88rem;outline:none;">
         </div>
         <div>
           <label style="font-size:0.72rem;font-weight:700;color:#445a5c;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:0.35rem;">To Date</label>
           <input id="reserve-to" type="date" required style="
-            width:100%;background:#1a1a1c;border:1px solid rgba(255,255,255,0.1);
-            border-radius:0.6rem;padding:0.65rem 0.85rem;color:#dce4e5;
+            width:100%;background:var(--chip-bg);border:1px solid var(--border-color);
+            border-radius:0.6rem;padding:0.65rem 0.85rem;color:var(--text-main);
             font-family:inherit;font-size:0.88rem;outline:none;">
         </div>
       </div>
@@ -1157,14 +1156,14 @@
       <!-- Fulfillment Option & Hub Selection -->
       <div>
         <label style="font-size:0.72rem;font-weight:700;color:#445a5c;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Fulfillment &amp; Pickup Option</label>
-        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:0.75rem;padding:0.75rem;">
-          <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#dce4e5;cursor:pointer;font-weight:600;">
+        <div style="border:1px solid var(--border-color);border-radius:0.75rem;padding:0.75rem;">
+          <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-main);cursor:pointer;font-weight:600;">
             <input type="radio" name="fulfillment_type" value="pickup" checked onchange="toggleFulfillmentMode('pickup')">
             Self-Pickup at CamCrew Hub (Free)
           </label>
           
           <div id="pickup-hub-wrap" style="padding-left:1.5rem;display:flex;flex-direction:column;gap:0.3rem;">
-            <select id="reserve-pickup-hub" style="border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;padding:0.45rem 0.65rem;color:#dce4e5;font-size:0.8rem;">
+            <select id="reserve-pickup-hub" style="border:1px solid var(--border-color);border-radius:0.5rem;padding:0.45rem 0.65rem;color:var(--text-main);font-size:0.8rem;">
               <option value="Mumbai - Andheri West Hub">Mumbai — Andheri West Hub (Off Link Rd)</option>
               <option value="Bengaluru - Koramangala Hub">Bengaluru — Koramangala Hub (80ft Rd)</option>
               <option value="Hyderabad - Film Nagar Hub">Hyderabad — Film Nagar Hub (Road No. 12)</option>
@@ -1176,7 +1175,7 @@
             </button>
           </div>
 
-          <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#dce4e5;cursor:pointer;font-weight:600;">
+          <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-main);cursor:pointer;font-weight:600;">
             <input type="radio" name="fulfillment_type" value="delivery" onchange="toggleFulfillmentMode('delivery')">
             Doorstep Express Courier Delivery (+₹250)
           </label>
@@ -1187,22 +1186,22 @@
       <div>
         <label style="font-size:0.72rem;font-weight:700;color:#445a5c;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:0.35rem;">Your Name</label>
         <input id="reserve-name" type="text" required placeholder="Full name" style="
-          width:100%;background:#1a1a1c;border:1px solid rgba(255,255,255,0.1);
-          border-radius:0.6rem;padding:0.65rem 0.85rem;color:#dce4e5;
+          width:100%;background:var(--chip-bg);border:1px solid var(--border-color);
+          border-radius:0.6rem;padding:0.65rem 0.85rem;color:var(--text-main);
           font-family:inherit;font-size:0.88rem;outline:none;">
       </div>
       <div>
         <label style="font-size:0.72rem;font-weight:700;color:#445a5c;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:0.35rem;">Email</label>
         <input id="reserve-email" type="email" required placeholder="your@email.com" style="
-          width:100%;background:#1a1a1c;border:1px solid rgba(255,255,255,0.1);
-          border-radius:0.6rem;padding:0.65rem 0.85rem;color:#dce4e5;
+          width:100%;background:var(--chip-bg);border:1px solid var(--border-color);
+          border-radius:0.6rem;padding:0.65rem 0.85rem;color:var(--text-main);
           font-family:inherit;font-size:0.88rem;outline:none;">
       </div>
       <div>
         <label style="font-size:0.72rem;font-weight:700;color:#445a5c;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:0.35rem;">Notes / Shoot Details (optional)</label>
         <input id="reserve-notes" type="text" placeholder="What's the shoot about?" style="
-          width:100%;background:#1a1a1c;border:1px solid rgba(255,255,255,0.1);
-          border-radius:0.6rem;padding:0.65rem 0.85rem;color:#dce4e5;
+          width:100%;background:var(--chip-bg);border:1px solid var(--border-color);
+          border-radius:0.6rem;padding:0.65rem 0.85rem;color:var(--text-main);
           font-family:inherit;font-size:0.88rem;outline:none;">
       </div>
 
@@ -1220,15 +1219,15 @@
      INTERACTIVE PICKUP HUBS MAP MODAL
 ══════════════════════════════════════════════════════════════ -->
 <div id="modal-hub-map" style="display:none;position:fixed;inset:0;z-index:250;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;">
-  <div style="border:1px solid rgba(255,255,255,0.15);border-radius:1.5rem;padding:1.5rem;width:100%;max-width:580px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.8);">
+  <div style="border:1px solid var(--border-color);border-radius:1.5rem;padding:1.5rem;width:100%;max-width:580px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.8);">
     <button onclick="closeHubMapModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#849495;font-size:1.2rem;cursor:pointer;">✕</button>
-    <h3 style="color:#dce4e5;font-size:1.1rem;font-weight:800;margin-bottom:0.2rem;display:flex;align-items:center;gap:0.4rem;">
+    <h3 style="color:var(--text-main);font-size:1.1rem;font-weight:800;margin-bottom:0.2rem;display:flex;align-items:center;gap:0.4rem;">
       <span class="material-symbols-outlined" style="color:#00dbe9;">location_on</span> CamCrew Pickup Hub Network (India)
     </h3>
     <p style="color:#849495;font-size:0.78rem;margin-bottom:1rem;">Click any verified hub pin to select it for your rental pickup.</p>
 
     <!-- Interactive SVG Map Preview -->
-    <div style="border:1px solid rgba(255,255,255,0.08);border-radius:1rem;padding:1rem;position:relative;height:240px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;overflow:hidden;">
+    <div style="border:1px solid var(--border-color);border-radius:1rem;padding:1rem;position:relative;height:240px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;overflow:hidden;">
       <svg width="100%" height="100%" viewBox="0 0 400 220" style="opacity:0.9;">
         <!-- Stylized India Network Graph -->
         <path d="M 120 40 L 220 30 L 280 90 L 230 180 L 140 190 L 100 130 Z" fill="rgba(0,219,233,0.03)" stroke="rgba(0,219,233,0.15)" stroke-width="1.5" stroke-dasharray="3 3"/>
@@ -1267,10 +1266,10 @@
 
     <!-- Hub Address Details List -->
     <div style="font-size:0.75rem;color:#849495;display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
-      <p><strong style="color:#dce4e5;">📍 Mumbai:</strong> Off Link Rd, Andheri W</p>
-      <p><strong style="color:#dce4e5;">📍 Bengaluru:</strong> 80ft Rd, Koramangala</p>
-      <p><strong style="color:#dce4e5;">📍 Hyderabad:</strong> Road No. 12, Film Nagar</p>
-      <p><strong style="color:#dce4e5;">📍 Kochi:</strong> Seaport-Airport Rd, Kakkanad</p>
+      <p><strong style="color:var(--text-main);">📍 Mumbai:</strong> Off Link Rd, Andheri W</p>
+      <p><strong style="color:var(--text-main);">📍 Bengaluru:</strong> 80ft Rd, Koramangala</p>
+      <p><strong style="color:var(--text-main);">📍 Hyderabad:</strong> Road No. 12, Film Nagar</p>
+      <p><strong style="color:var(--text-main);">📍 Kochi:</strong> Seaport-Airport Rd, Kakkanad</p>
     </div>
   </div>
 </div>
@@ -1540,7 +1539,7 @@ function renderGearGrid(list) {
         <!-- Top Photo Banner -->
         <div class="pro-card-banner">
           <img src="${imgSrc}" alt="${esc(eq.name)}" class="pro-card-img" onerror="this.onerror=null;this.src='${fallbackImg}';"/>
-          <span class="badge-intl" style="background:${isBay ? '#0e5a6f' : 'rgba(15,23,42,0.85)'}">${isBay ? 'STUDIO BAY' : 'EQUIPMENT'}</span>
+          <span class="badge-intl" style="background:${isBay ? "#0e5a6f' : 'rgba(15,23,42,0.85)'}">${isBay ? 'STUDIO BAY' : 'EQUIPMENT'}</span>
           <div class="badge-verified" title="Available for Rental">
             <span class="material-symbols-outlined text-sm text-teal-700 font-bold">verified</span>
           </div>
@@ -1807,7 +1806,7 @@ async function submitReservation(e) {
         closeReserveModal();
 
         const banner = document.createElement('div');
-        banner.style.cssText = 'position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);background:#0e0e10;border:1px solid rgba(0,219,233,0.3);border-radius:999px;padding:0.75rem 1.8rem;color:#00dbe9;font-size:0.88rem;font-weight:700;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.5);';
+        banner.style.cssText = 'position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);background:var(--chip-bg);border:1px solid rgba(0,219,233,0.3);border-radius:999px;padding:0.75rem 1.8rem;color:#00dbe9;font-size:0.88rem;font-weight:700;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.5);';
         banner.textContent = `✓ Payment Authorized (${paymentResult.transaction_ref})! Rental locked & receipt sent to email.`;
         document.body.appendChild(banner);
         setTimeout(() => banner.remove(), 5000);
