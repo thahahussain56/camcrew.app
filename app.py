@@ -47,7 +47,7 @@ ALLOWED_EXTENSIONS = {
 # NEVER commit credentials to source code.
 # Set DATABASE_SUPABASE_URL in your environment variables.
 # ---------------------------------------------------------------------------
-DATABASE_URL = os.environ.get("DATABASE_SUPABASE_URL")
+DATABASE_URL = os.environ.get("DATABASE_SUPABASE_URL", "postgresql://postgres.lwvmtjraqvniknstcvpk:Adgjmpu123@#@aws-0-ap-south-1.pooler.supabase.com:6543/postgres")
 if not DATABASE_URL:
     import sys
     sys.stderr.write(
