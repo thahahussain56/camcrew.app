@@ -581,6 +581,17 @@ def init_db():
         conn.execute("ALTER TABLE products ADD COLUMN IF NOT EXISTS spec_format TEXT")
         conn.execute("ALTER TABLE products ADD COLUMN IF NOT EXISTS about_bullets TEXT")
 
+        # Ensure default admin user exists
+        admin_email = "admin@cc.com"
+        admin_pass = "admin@cc.com"
+        from werkzeug.security import generate_password_hash
+        hashed_pw = generate_password_hash(admin_pass)
+        existing_admin = conn.execute("SELECT id FROM users WHERE email=%s", (admin_email,)).fetchone()
+        if existing_admin:
+            conn.execute("UPDATE users SET password=%s, role='admin' WHERE email=%s", (hashed_pw, admin_email))
+        else:
+            conn.execute("INSERT INTO users (email, password, role, display_name) VALUES (%s, %s, 'admin', 'System Admin')", (admin_email, hashed_pw))
+
 
 def seed_demo_data(user_id):
     """Populate sample orders/bookings/rewards for a user that has none yet."""
