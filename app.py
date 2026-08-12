@@ -581,6 +581,46 @@ def init_db():
         conn.execute("ALTER TABLE products ADD COLUMN IF NOT EXISTS spec_format TEXT")
         conn.execute("ALTER TABLE products ADD COLUMN IF NOT EXISTS about_bullets TEXT")
 
+        # New Auth/Calendar/Chat tables
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS messages (
+                id           SERIAL PRIMARY KEY,
+                sender_id    INTEGER NOT NULL,
+                receiver_id  INTEGER NOT NULL,
+                context_id   TEXT,
+                content      TEXT NOT NULL,
+                read_status  INTEGER DEFAULT 0,
+                created_at   TEXT DEFAULT TO_CHAR(NOW(), 'YYYY-MM-DD HH24:MI:SS')
+            )
+        """)
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS blocked_dates (
+                id              SERIAL PRIMARY KEY,
+                professional_id INTEGER NOT NULL,
+                date            TEXT NOT NULL,
+                reason          TEXT,
+                created_at      TEXT DEFAULT TO_CHAR(NOW(), 'YYYY-MM-DD HH24:MI:SS')
+            )
+        """)
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS otps (
+                id          SERIAL PRIMARY KEY,
+                identifier  TEXT NOT NULL,
+                code        TEXT NOT NULL,
+                expires_at  TEXT NOT NULL,
+                verified    INTEGER DEFAULT 0
+            )
+        """)
+        # Alter existing tables
+        conn.execute("ALTER TABLE bookings ADD COLUMN IF NOT EXISTS start_time TEXT")
+        conn.execute("ALTER TABLE bookings ADD COLUMN IF NOT EXISTS end_time TEXT")
+        conn.execute("ALTER TABLE bookings ADD COLUMN IF NOT EXISTS duration REAL")
+        conn.execute("ALTER TABLE bookings ADD COLUMN IF NOT EXISTS event_type TEXT")
+
+        conn.execute("ALTER TABLE orders ADD COLUMN IF NOT EXISTS shipping_fee REAL DEFAULT 0")
+        conn.execute("ALTER TABLE orders ADD COLUMN IF NOT EXISTS tax_amount REAL DEFAULT 0")
+        conn.execute("ALTER TABLE orders ADD COLUMN IF NOT EXISTS discount_amount REAL DEFAULT 0")
+
         # Ensure default admin user exists
         admin_email = "admin@cc.com"
         admin_pass = "admin@cc.com"
@@ -695,6 +735,11 @@ def init_rental_tables():
                 FOREIGN KEY (professional_id) REFERENCES users(id)
             )
         """)
+        conn.execute("ALTER TABLE rental_orders ADD COLUMN IF NOT EXISTS kyc_document_url TEXT")
+        conn.execute("ALTER TABLE rental_orders ADD COLUMN IF NOT EXISTS fulfillment_mode TEXT")
+        conn.execute("ALTER TABLE rental_orders ADD COLUMN IF NOT EXISTS delivery_address TEXT")
+        conn.execute("ALTER TABLE rental_orders ADD COLUMN IF NOT EXISTS security_deposit_amount REAL DEFAULT 0")
+        conn.execute("ALTER TABLE rental_orders ADD COLUMN IF NOT EXISTS security_deposit_status TEXT")
 
 def init_professional_tables():
     """Create professional_requests, professional_jobs, vault_folders, vault_files tables."""
@@ -1629,6 +1674,69 @@ def register():
     session["email"]   = row["email"]
     session["role"]    = row["role"]
 
+    token = generate_auth_token(row["id"])
+    return jsonify({"ok": True, "user": {"email": row["email"], "role": row["role"]}, "token": token})
+
+@app.route("/api/auth/google", methods=["POST"])
+def auth_google():
+    data = request.get_json(force=True)
+    google_token = data.get("token")
+    # MOCK LOGIC: We assume the client verified Google Auth and sends an email.
+    email = (data.get("email") or "").strip().lower()
+    if not email:
+        return jsonify({"ok": False, "error": "Google token / Email missing"}), 400
+    with get_db() as conn:
+        row = conn.execute("SELECT * FROM users WHERE email = %s", (email,)).fetchone()
+        if not row:
+            hashed = generate_password_hash("google_oauth_placeholder")
+            conn.execute("INSERT INTO users (email, password, role) VALUES (%s, %s, 'customer')", (email, hashed))
+            row = conn.execute("SELECT * FROM users WHERE email = %s", (email,)).fetchone()
+    
+    session["user_id"] = row["id"]
+    session["email"]   = row["email"]
+    session["role"]    = row["role"]
+    token = generate_auth_token(row["id"])
+    return jsonify({"ok": True, "user": {"email": row["email"], "role": row["role"]}, "token": token})
+
+@app.route("/api/auth/send-otp", methods=["POST"])
+def auth_send_otp():
+    data = request.get_json(force=True)
+    identifier = (data.get("identifier") or "").strip()
+    if not identifier:
+        return jsonify({"ok": False, "error": "Identifier required"}), 400
+    
+    # MOCK LOGIC: Always generate 123456
+    code = "123456"
+    print(f"MOCK OTP for {identifier}: {code}")
+    with get_db() as conn:
+        conn.execute(
+            "INSERT INTO otps (identifier, code, expires_at) VALUES (%s, %s, TO_CHAR(NOW() + INTERVAL '10 minutes', 'YYYY-MM-DD HH24:MI:SS'))",
+            (identifier, code)
+        )
+    return jsonify({"ok": True, "message": "OTP sent successfully"})
+
+@app.route("/api/auth/verify-otp", methods=["POST"])
+def auth_verify_otp():
+    data = request.get_json(force=True)
+    identifier = (data.get("identifier") or "").strip()
+    code = (data.get("code") or "").strip()
+    
+    with get_db() as conn:
+        otp_row = conn.execute("SELECT * FROM otps WHERE identifier=%s AND code=%s AND verified=0 ORDER BY id DESC LIMIT 1", (identifier, code)).fetchone()
+        if not otp_row:
+            return jsonify({"ok": False, "error": "Invalid or expired OTP"}), 400
+        conn.execute("UPDATE otps SET verified=1 WHERE id=%s", (otp_row['id'],))
+        
+        row = conn.execute("SELECT * FROM users WHERE email = %s", (identifier,)).fetchone()
+        if not row:
+            # Create user if it's a new mobile/email
+            hashed = generate_password_hash("otp_login_placeholder")
+            conn.execute("INSERT INTO users (email, password, role) VALUES (%s, %s, 'customer')", (identifier, hashed))
+            row = conn.execute("SELECT * FROM users WHERE email = %s", (identifier,)).fetchone()
+    
+    session["user_id"] = row["id"]
+    session["email"]   = row["email"]
+    session["role"]    = row["role"]
     token = generate_auth_token(row["id"])
     return jsonify({"ok": True, "user": {"email": row["email"], "role": row["role"]}, "token": token})
 
@@ -4901,6 +5009,56 @@ def professional_earnings():
         "jobs":           jobs_list,
     }})
 
+
+# ---------------------------------------------------------------------------
+# Admin API
+# ---------------------------------------------------------------------------
+# Chat & Calendar API
+# ---------------------------------------------------------------------------
+
+@app.route("/api/chat/<context_id>", methods=["GET"])
+def chat_history(context_id):
+    uid = session.get("user_id")
+    if not uid: return jsonify({"ok": False}), 401
+    with get_db() as conn:
+        msgs = conn.execute("SELECT * FROM messages WHERE context_id=%s ORDER BY id ASC", (context_id,)).fetchall()
+        if msgs and msgs[0]["sender_id"] != uid and msgs[0]["receiver_id"] != uid:
+            return jsonify({"ok": False, "error": "Unauthorized"}), 403
+    return jsonify({"ok": True, "messages": [dict(m) for m in msgs]})
+
+@app.route("/api/chat/<context_id>", methods=["POST"])
+def send_chat(context_id):
+    uid = session.get("user_id")
+    if not uid: return jsonify({"ok": False}), 401
+    data = request.get_json(force=True)
+    content = (data.get("content") or "").strip()
+    receiver_id = data.get("receiver_id")
+    if not content or not receiver_id: return jsonify({"ok": False, "error": "Missing content or receiver"}), 400
+    with get_db() as conn:
+        conn.execute("INSERT INTO messages (sender_id, receiver_id, context_id, content) VALUES (%s, %s, %s, %s)", (uid, receiver_id, context_id, content))
+    return jsonify({"ok": True})
+
+@app.route("/api/professionals/<int:pro_id>/availability", methods=["GET"])
+def pro_availability(pro_id):
+    with get_db() as conn:
+        dates = conn.execute("SELECT date FROM blocked_dates WHERE professional_id=%s", (pro_id,)).fetchall()
+    return jsonify({"ok": True, "blocked_dates": [d["date"] for d in dates]})
+
+@app.route("/api/professionals/blocked-dates", methods=["POST"])
+def manage_blocked_dates():
+    uid = session.get("user_id")
+    if not uid: return jsonify({"ok": False}), 401
+    data = request.get_json(force=True)
+    date_str = (data.get("date") or "").strip()
+    reason = (data.get("reason") or "").strip()
+    action = data.get("action") # 'add' or 'remove'
+    if not date_str or not action: return jsonify({"ok": False, "error": "Missing fields"}), 400
+    with get_db() as conn:
+        if action == 'add':
+            conn.execute("INSERT INTO blocked_dates (professional_id, date, reason) VALUES (%s, %s, %s)", (uid, date_str, reason))
+        else:
+            conn.execute("DELETE FROM blocked_dates WHERE professional_id=%s AND date=%s", (uid, date_str))
+    return jsonify({"ok": True})
 
 # ---------------------------------------------------------------------------
 # Admin API
