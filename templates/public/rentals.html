@@ -1157,14 +1157,14 @@
       <!-- Fulfillment Option & Hub Selection -->
       <div>
         <label style="font-size:0.72rem;font-weight:700;color:#445a5c;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Fulfillment &amp; Pickup Option</label>
-        <div style="display:flex;flex-direction:column;gap:0.5rem;background:#14181f;border:1px solid rgba(255,255,255,0.08);border-radius:0.75rem;padding:0.75rem;">
+        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:0.75rem;padding:0.75rem;">
           <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#dce4e5;cursor:pointer;font-weight:600;">
             <input type="radio" name="fulfillment_type" value="pickup" checked onchange="toggleFulfillmentMode('pickup')">
             Self-Pickup at CamCrew Hub (Free)
           </label>
           
           <div id="pickup-hub-wrap" style="padding-left:1.5rem;display:flex;flex-direction:column;gap:0.3rem;">
-            <select id="reserve-pickup-hub" style="width:100%;background:#1a1a1c;border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;padding:0.45rem 0.65rem;color:#dce4e5;font-size:0.8rem;">
+            <select id="reserve-pickup-hub" style="border:1px solid rgba(255,255,255,0.1);border-radius:0.5rem;padding:0.45rem 0.65rem;color:#dce4e5;font-size:0.8rem;">
               <option value="Mumbai - Andheri West Hub">Mumbai — Andheri West Hub (Off Link Rd)</option>
               <option value="Bengaluru - Koramangala Hub">Bengaluru — Koramangala Hub (80ft Rd)</option>
               <option value="Hyderabad - Film Nagar Hub">Hyderabad — Film Nagar Hub (Road No. 12)</option>
@@ -1220,7 +1220,7 @@
      INTERACTIVE PICKUP HUBS MAP MODAL
 ══════════════════════════════════════════════════════════════ -->
 <div id="modal-hub-map" style="display:none;position:fixed;inset:0;z-index:250;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;">
-  <div style="background:#0e0e10;border:1px solid rgba(255,255,255,0.15);border-radius:1.5rem;padding:1.5rem;width:100%;max-width:580px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.8);">
+  <div style="border:1px solid rgba(255,255,255,0.15);border-radius:1.5rem;padding:1.5rem;width:100%;max-width:580px;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.8);">
     <button onclick="closeHubMapModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#849495;font-size:1.2rem;cursor:pointer;">✕</button>
     <h3 style="color:#dce4e5;font-size:1.1rem;font-weight:800;margin-bottom:0.2rem;display:flex;align-items:center;gap:0.4rem;">
       <span class="material-symbols-outlined" style="color:#00dbe9;">location_on</span> CamCrew Pickup Hub Network (India)
@@ -1228,7 +1228,7 @@
     <p style="color:#849495;font-size:0.78rem;margin-bottom:1rem;">Click any verified hub pin to select it for your rental pickup.</p>
 
     <!-- Interactive SVG Map Preview -->
-    <div style="background:#14181f;border:1px solid rgba(255,255,255,0.08);border-radius:1rem;padding:1rem;position:relative;height:240px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;overflow:hidden;">
+    <div style="border:1px solid rgba(255,255,255,0.08);border-radius:1rem;padding:1rem;position:relative;height:240px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;overflow:hidden;">
       <svg width="100%" height="100%" viewBox="0 0 400 220" style="opacity:0.9;">
         <!-- Stylized India Network Graph -->
         <path d="M 120 40 L 220 30 L 280 90 L 230 180 L 140 190 L 100 130 Z" fill="rgba(0,219,233,0.03)" stroke="rgba(0,219,233,0.15)" stroke-width="1.5" stroke-dasharray="3 3"/>

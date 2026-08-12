@@ -2347,3 +2347,34 @@ html.light .brief-card:hover {
 }
 
 
+
+
+/* Remove strokes for containers in light theme */
+[data-theme="light"] .glass-panel,
+[data-theme="light"] .glass-panel:hover,
+[data-theme="light"] .service-card,
+[data-theme="light"] .service-card:hover,
+[data-theme="light"] .product-card,
+[data-theme="light"] .product-card:hover,
+[data-theme="light"] .rental-card,
+[data-theme="light"] .rental-card:hover,
+[data-theme="light"] .dashboard-card,
+[data-theme="light"] .dashboard-card:hover,
+[data-theme="light"] .neon-border-glow,
+[data-theme="light"] .neon-border-glow:hover,
+html.light .glass-panel,
+html.light .glass-panel:hover,
+html.light .service-card,
+html.light .service-card:hover,
+html.light .product-card,
+html.light .product-card:hover,
+html.light .rental-card,
+html.light .rental-card:hover,
+html.light .dashboard-card,
+html.light .dashboard-card:hover,
+html.light .neon-border-glow,
+html.light .neon-border-glow:hover {
+    border-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
