@@ -716,16 +716,16 @@ html.light .url-display {
       </div>
       <!-- Desktop Action Buttons -->
       <div id="pp-cta-wrap" style="padding-bottom:0.5rem;display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap;">
-        <a href="index.html" class="btn-ghost" title="Go to Home">
+        <a href="/" class="btn-ghost" title="Go to Home">
           <span class="material-symbols-outlined" style="font-size:0.9rem;">home</span> Home
         </a>
-        <a href="professional-dashboard.html" class="btn-ghost" title="Dashboard">
+        <a href="/professional-dashboard" class="btn-ghost" title="Dashboard">
           <span class="material-symbols-outlined" style="font-size:0.9rem;">dashboard</span> Dashboard
         </a>
         <a id="pp-public-link-btn" href="#" target="_blank" class="btn-ghost" title="View Public Profile">
           <span class="material-symbols-outlined" style="font-size:0.9rem;">open_in_new</span> View Public Profile
         </a>
-        <a href="professional-edit.html" class="btn-book-cta" style="padding:0.65rem 1.25rem;">
+        <a href="/professional-edit" class="btn-book-cta" style="padding:0.65rem 1.25rem;">
           <span class="material-symbols-outlined" style="font-size:0.9rem;">edit</span> Edit Profile
         </a>
       </div>
@@ -983,7 +983,7 @@ function render(vaultFiles, completedJobs) {
     : `<div class="grid-empty">
         <span class="material-symbols-outlined" style="font-size:3.5rem;color:rgba(255,255,255,0.07);">photo_library</span>
         <p style="color:var(--pp-text-muted);font-size:0.88rem;">No portfolio items shared yet.</p>
-        <a href="professional-edit.html" style="font-size:0.8rem;color:var(--pp-accent);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;">
+        <a href="/professional-edit" style="font-size:0.8rem;color:var(--pp-accent);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;">
           Upload & Manage Portfolio <span class="material-symbols-outlined" style="font-size:0.85rem;">arrow_forward</span>
         </a>
       </div>`;
@@ -1064,7 +1064,7 @@ function render(vaultFiles, completedJobs) {
       </div>
       <div class="share-card">
         <p class="share-sub">Your public profile link isn't available yet. Complete your profile setup to get a shareable link.</p>
-        <a href="professional-edit.html" style="font-size:0.82rem;color:var(--pp-accent);font-weight:700;text-decoration:none;margin-top:0.5rem;display:inline-block;">→ Complete Profile Setup</a>
+        <a href="/professional-edit" style="font-size:0.82rem;color:var(--pp-accent);font-weight:700;text-decoration:none;margin-top:0.5rem;display:inline-block;">→ Complete Profile Setup</a>
       </div>`;
 
   /* ─ Render Layout ─ */

@@ -633,7 +633,7 @@
 <div id="auth-gate" style="display:none" class="flex-1 flex items-center justify-center px-4">
   <div class="nm-auth-card">
     <div class="mb-5">
-      <a href="index.html">
+      <a href="/">
         <img class="site-logo" src="/static/img/camcrew_studio_logo_cop_y.png"
              alt="Camcrew Studio" style="height:1.5rem;width:auto;"/>
       </a>
@@ -643,8 +643,8 @@
     </div>
     <h2 style="color:#dce4e5;font-weight:800;font-size:1.2rem;margin-bottom:0.4rem;">Sign in to access your dashboard</h2>
     <p style="color:#849495;font-size:0.88rem;margin-bottom:1.5rem;">Manage bookings, client requests, and your file vault.</p>
-    <a href="signin.html" class="cc-btn-primary" style="text-decoration:none;">Sign In</a>
-    <p style="font-size:0.85rem;color:#849495;margin-top:1rem;">No account? <a href="signup.html" style="color:var(--ac);font-weight:700;">Sign up</a></p>
+    <a href="/signin" class="cc-btn-primary" style="text-decoration:none;">Sign In</a>
+    <p style="font-size:0.85rem;color:#849495;margin-top:1rem;">No account? <a href="/signup" style="color:var(--ac);font-weight:700;">Sign up</a></p>
   </div>
 </div>
 
@@ -656,7 +656,7 @@
     </div>
     <h2 style="color:#dce4e5;font-weight:800;font-size:1.2rem;margin-bottom:0.4rem;">Professional accounts only</h2>
     <p style="color:#849495;font-size:0.88rem;margin-bottom:1.5rem;">Your account role is <span id="role-display" style="color:var(--ac);font-weight:700;"></span>. Only professionals have this dashboard.</p>
-    <a href="customer-profile.html" class="cc-btn-primary" style="text-decoration:none;">Go to My Account</a>
+    <a href="/customer-profile" class="cc-btn-primary" style="text-decoration:none;">Go to My Account</a>
   </div>
 </div>
 
@@ -666,7 +666,7 @@
   <!-- ── Sidebar ────────────────────────────────────────────── -->
   <aside class="cp-sidebar">
     <div class="cp-sidebar-logo">
-      <a href="index.html">
+      <a href="/">
         <img class="site-logo" src="/static/img/camcrew_studio_logo_cop_y.png"
              alt="Camcrew Studio" style="width:140px;height:auto;display:block;"/>
       </a>
@@ -683,7 +683,7 @@
       </div>
       <div style="display:flex;gap:0.4rem;">
         <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(0,219,233,0.1);color:#00dbe9;padding:0.18rem 0.55rem;border-radius:999px;">Pro</span>
-        <a href="professional-edit.html" class="edit-profile-chip">Edit Profile</a>
+        <a href="/professional-edit" class="edit-profile-chip">Edit Profile</a>
       </div>
     </div>
     <div class="nav-divider"></div>
@@ -744,7 +744,7 @@
 
     <!-- Mobile header -->
     <div class="mobile-header">
-      <a href="index.html">
+      <a href="/">
         <img class="site-logo" src="/static/img/camcrew_studio_logo_cop_y.png"
              alt="Camcrew Studio" style="height:1.5rem;width:auto;"/>
       </a>
@@ -752,7 +752,7 @@
         <button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark theme">
           <span class="material-symbols-outlined theme-icon-mobile" style="font-size:1.1rem;">light_mode</span>
         </button>
-        <button class="mobile-header-back" onclick="history.length>1?history.back():window.location.href='index.html'">
+        <button class="mobile-header-back" onclick="history.length>1?history.back():window.location.href="/"">
           <span class="material-symbols-outlined" style="font-size:1.15rem;">arrow_back</span>
         </button>
       </div>
@@ -784,7 +784,7 @@
             <span class="material-symbols-outlined theme-icon-mobile" style="font-size:1rem;">light_mode</span>
           </button>
           <button id="close-btn" class="btn-sm btn-sm-ghost" title="Close"
-            onclick="history.length>1?history.back():window.location.href='index.html'">
+            onclick="history.length>1?history.back():window.location.href="/"">
             <span class="material-symbols-outlined" style="font-size:1rem;">close</span>
           </button>
         </div>
@@ -907,7 +907,7 @@
 
       <!-- ═══ SALES ══════════════════════════════════════════════════ -->
       <div id="sec-sales" class="hidden">
-        <p class="sec-sub">List your products for sale and track orders from the <a href="sales.html" style="color:var(--ac);font-weight:700;">Sales page</a>.</p>
+        <p class="sec-sub">List your products for sale and track orders from the <a href="/sales" style="color:var(--ac);font-weight:700;">Sales page</a>.</p>
 
         <!-- Sales tabs -->
         <div style="display:flex;gap:0.5rem;margin-bottom:1.25rem;">
@@ -1018,10 +1018,10 @@
           <div id="ac-msg" class="hidden text-sm"></div>
           <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
             <button onclick="saveAccount()" class="cc-btn-primary" style="width:auto;padding:0.7rem 1.8rem;">Save Changes</button>
-            <a href="forgot-password.html" class="btn-sm btn-sm-ghost" style="padding:0.7rem 1.2rem;text-decoration:none;">
+            <a href="/forgot-password" class="btn-sm btn-sm-ghost" style="padding:0.7rem 1.2rem;text-decoration:none;">
               <span class="material-symbols-outlined" style="font-size:1rem;">lock_reset</span> Change Password
             </a>
-            <a href="professional-edit.html" class="btn-sm btn-sm-cyan" style="padding:0.7rem 1.2rem;text-decoration:none;">
+            <a href="/professional-edit" class="btn-sm btn-sm-cyan" style="padding:0.7rem 1.2rem;text-decoration:none;">
               <span class="material-symbols-outlined" style="font-size:1rem;">edit</span> Edit Pro Profile
             </a>
           </div>
@@ -2192,7 +2192,7 @@ function renderProductsList() {
       </div>
       ${p.description ? `<p style="font-size:0.83rem;color:#849495;margin-bottom:0.55rem;">${esc(p.description)}</p>` : ''}
       <div style="display:flex;gap:0.5rem;justify-content:flex-end;flex-wrap:wrap;">
-        <a href="sales.html" target="_blank" class="btn-sm btn-sm-ghost" title="View on Sales page">
+        <a href="/sales" target="_blank" class="btn-sm btn-sm-ghost" title="View on Sales page">
           <span class="material-symbols-outlined" style="font-size:0.9rem;">open_in_new</span>
         </a>
         <button onclick="openEditProductModal(${p.id})" class="btn-sm btn-sm-ghost">

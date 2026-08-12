@@ -496,7 +496,7 @@
       <section class="glass-panel rounded-2xl p-6 section-enter" style="animation-delay:.18s">
         <div class="flex items-center justify-between mb-5">
           <h3 class="text-[18px] font-bold text-on-surface">Order Summary</h3>
-          <a href="cart.html" class="text-[11px] text-primary-container font-bold uppercase tracking-wider hover:text-primary transition-colors flex items-center gap-1">
+          <a href="/cart" class="text-[11px] text-primary-container font-bold uppercase tracking-wider hover:text-primary transition-colors flex items-center gap-1">
             <span class="material-symbols-outlined text-[14px]">edit</span>Edit
           </a>
         </div>
@@ -696,7 +696,7 @@ async function loadCheckoutSummary() {
     if (res.status === 401) {
       document.getElementById('checkout-items-list').innerHTML =
         `<p class="text-on-surface-variant text-sm py-2">
-           <a href="signin.html" class="text-primary-container underline">Sign in</a> to view your cart.
+           <a href="/signin" class="text-primary-container underline">Sign in</a> to view your cart.
          </p>`;
       return;
     }
@@ -706,7 +706,7 @@ async function loadCheckoutSummary() {
         `<div class="text-center py-4">
            <span class="material-symbols-outlined text-on-surface-variant text-[32px] block mb-2">shopping_cart</span>
            <p class="text-on-surface-variant text-sm">Your cart is empty.</p>
-           <a href="sales.html" class="text-primary-container text-sm font-bold hover:underline">Shop now →</a>
+           <a href="/sales" class="text-primary-container text-sm font-bold hover:underline">Shop now →</a>
          </div>`;
       return;
     }
