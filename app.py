@@ -45,14 +45,14 @@ ALLOWED_EXTENSIONS = {
 # ---------------------------------------------------------------------------
 # Database configuration — credentials MUST be set via environment variable.
 # NEVER commit credentials to source code.
-# Set DATABASE_SUPABASE_URL in your environment variables.
+# Set RENDER_DATABASE_URL in Render → Environment → Environment Variables.
 # ---------------------------------------------------------------------------
-DATABASE_URL = os.environ.get("DATABASE_SUPABASE_URL", "postgresql://postgres.lwvmtjraqvniknstcvpk:Adgjmpu123@#@aws-0-ap-south-1.pooler.supabase.com:6543/postgres")
+DATABASE_URL = os.environ.get("RENDER_DATABASE_URL")
 if not DATABASE_URL:
     import sys
     sys.stderr.write(
-        "\n[FATAL] DATABASE_SUPABASE_URL environment variable is not set.\n"
-        "Set it in your environment and redeploy.\n\n"
+        "\n[FATAL] RENDER_DATABASE_URL environment variable is not set.\n"
+        "Set it in Render → Environment → Environment Variables and redeploy.\n\n"
     )
     sys.exit(1)
 
@@ -92,8 +92,8 @@ class _DBConn:
     Enforces Indian Standard Time (IST / Asia/Kolkata / UTC+5:30) across all DB sessions.
     """
     def __init__(self):
-        url = os.environ.get("DATABASE_SUPABASE_URL") or os.environ.get("DATABASE_URL") or DEFAULT_DATABASE_URL
-        if url and "sslmode" not in url and ("supabase.co" in url or "supabase.com" in url):
+        url = os.environ.get("RENDER_DATABASE_URL") or os.environ.get("DATABASE_URL") or DEFAULT_DATABASE_URL
+        if url and "sslmode" not in url and ("postgres.render.com" in url or "render.com" in url):
             url += "?sslmode=require" if "?" not in url else "&sslmode=require"
         self._is_sqlite = False
         if url:
