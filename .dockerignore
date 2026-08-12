@@ -1,0 +1,30 @@
+# Database & Local Runtime Data
+*.db
+*.sqlite
+camcrew_local.db
+uploads/*
+!uploads/.gitkeep
+zipFile.zip
+
+# Python Bytecode & Caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Version Control & Config
+.git/
+.gitignore
+.env
+*.env
+
+# Redundant Files & Unused Scripts
+main.py
+uv.lock
+pyproject.toml
+
+# IDE & OS Metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

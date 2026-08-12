@@ -1,16 +1,35 @@
-# Python virtual environment
+# Python virtual environments & packages
+.venv/
+venv/
+env/
+ENV/
 .pythonlibs/
+
+# Bytecode & Caches
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.cache/
+.pytest_cache/
+.coverage
 
-# SQLite database (runtime data)
+# SQLite database & local runtime storage
 *.db
 *.sqlite
+camcrew_local.db
 
-# Uploaded zip
+# User runtime uploads (keep folder structure clean)
+uploads/*
+!uploads/.gitkeep
 zipFile.zip
 
-# Replit cache
-.cache/
+# Environment variables & secrets
+.env
+*.env
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
