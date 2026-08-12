@@ -416,7 +416,7 @@
         showing.innerHTML = `Showing <strong style="color:var(--neu-text)">${start}–${end}</strong> of ${totalOrders} orders`;
 
         tbody.innerHTML = orders.map((o,i) => `
-          <tr class="neu-row transition-colors" style="${i<orders.length-1?'border-bottom:1px solid rgba(0,0,0,0.06);':''}">
+          <tr class="neu-row transition-colors" style="${i<orders.length-1?"border-bottom:1px solid rgba(0,0,0,0.06);':''}">
             <td class="px-6 py-5" style="font-size:0.92rem;font-weight:800;color:#006970;font-family:monospace;">${o.order_ref}</td>
             <td class="px-6 py-5">
               <div class="flex items-center gap-3">

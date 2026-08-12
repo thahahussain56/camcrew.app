@@ -393,7 +393,7 @@
       return;
     }
     tbody.innerHTML = reqs.map((r,i,arr) => `
-      <tr class="neu-row transition-colors" style="${i<arr.length-1?'border-bottom:1px solid rgba(0,0,0,0.06);':''}">
+      <tr class="neu-row transition-colors" style="${i<arr.length-1?"border-bottom:1px solid rgba(0,0,0,0.06);':''}">
         <td class="px-8 py-6">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-xl flex items-center justify-center neu-btn">

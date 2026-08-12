@@ -1326,7 +1326,7 @@ function renderTrackModal(t) {
         <div style="
           width:2rem; height:2rem; border-radius:50%; flex-shrink:0;
           display:flex; align-items:center; justify-content:center;
-          background:${active ? 'rgba(0,219,233,0.15)' : done ? 'rgba(74,222,128,0.12)' : 'rgba(255,255,255,0.05)'};
+          background:${active ? "rgba(0,219,233,0.15)' : done ? 'rgba(74,222,128,0.12)' : 'rgba(255,255,255,0.05)'};
           border:2px solid ${color};
         ">
           <span class="material-symbols-outlined" style="font-size:0.9rem;color:${color};">${step.icon}</span>
@@ -1336,7 +1336,7 @@ function renderTrackModal(t) {
           ${active ? '<p style="font-size:0.75rem;color:#849495;margin-top:0.1rem;">Currently here</p>' : ''}
         </div>
         <div style="padding-top:0.45rem;">
-          <span class="material-symbols-outlined" style="font-size:1.1rem;color:${done || active ? color : 'rgba(255,255,255,0.1)'};">
+          <span class="material-symbols-outlined" style="font-size:1.1rem;color:${done || active ? color : "rgba(255,255,255,0.1)'};">
             ${done ? 'check_circle' : active ? 'radio_button_checked' : 'radio_button_unchecked'}
           </span>
         </div>
@@ -1350,7 +1350,7 @@ function renderTrackModal(t) {
       ${metaRows.map(([label, val]) => `
         <div class="flex justify-between items-center gap-4">
           <span style="color:#849495;">${label}</span>
-          <span style="color:#dce4e5;font-weight:700;font-family:${label === 'Tracking Number' ? 'monospace' : 'inherit'};">${val}</span>
+          <span style="color:#dce4e5;font-weight:700;font-family:${label === "Tracking Number' ? 'monospace' : 'inherit'};">${val}</span>
         </div>`).join('')}
     </div>
     <div style="border-top:1px solid var(--ns);margin-bottom:1.25rem;"></div>
@@ -1498,7 +1498,7 @@ function renderTimeline(order) {
             <span class="material-symbols-outlined" style="font-size:1rem;">${step.icon}</span>
           </div>
           <div class="pt-1">
-            <p style="font-size:0.875rem;font-weight:700;color:${active?'var(--ac)':done?'#4ade80':'#849495'}">${step.label}</p>
+            <p style="font-size:0.875rem;font-weight:700;color:${active?"var(--ac)':done?'#4ade80':'#849495'}">${step.label}</p>
             ${active?'<p style="font-size:0.75rem;color:#849495;margin-top:0.1rem;">Currently here</p>':''}
           </div>
         </div>`;

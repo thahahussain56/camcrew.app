@@ -1144,7 +1144,7 @@
         <label class="fi-label">Image URL (Optional)</label>
         <input id="rental-image-url" class="fi" type="url" placeholder="https://images.unsplash.com/photo-..."/>
       </div>
-      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 0.85rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;">
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.65rem 0.85rem;background:rgba(255,255,255,0.04);border:1px solid var(--border-color);border-radius:0.75rem;">
         <input id="rental-available" type="checkbox" checked style="width:1.1rem;height:1.1rem;accent-color:var(--ac);cursor:pointer;"/>
         <label for="rental-available" style="font-size:0.85rem;font-weight:600;color:#1a2a2b;cursor:pointer;">Available for rent right now</label>
       </div>
@@ -1568,7 +1568,7 @@ function renderShootStatusControls(bookingId, currentStatus) {
         ${statuses.map(s => `
           <button type="button" onclick="advanceShootStatus(${bookingId}, '${s.key}')"
             style="padding:0.35rem 0.65rem;border-radius:0.5rem;font-size:0.72rem;font-weight:700;cursor:pointer;
-            ${currentStatus === s.key ? 'background:#00dbe9;color:#001f22;border:none;' : 'background:rgba(255,255,255,0.04);color:#849495;border:1px solid rgba(255,255,255,0.08);'}">
+            ${currentStatus === s.key ? "background:#00dbe9;color:#001f22;border:none;' : 'background:rgba(255,255,255,0.04);color:#849495;border:1px solid var(--border-color);'}">
             ${s.label}
           </button>`).join('')}
       </div>
@@ -2430,7 +2430,7 @@ function renderTimeline(steps, order, currentStatus, meta) {
               <span class="material-symbols-outlined" style="font-size:1rem;">${step.icon}</span>
             </div>
             <div class="pt-1">
-              <p style="font-size:0.88rem;font-weight:700;color:${active?'#00dbe9':done?'#4ade80':'#849495'};">${step.label}</p>
+              <p style="font-size:0.88rem;font-weight:700;color:${active?"#00dbe9':done?'#4ade80':'#849495'};">${step.label}</p>
               ${active ? '<p style="font-size:0.75rem;color:#849495;margin-top:1px;">Currently here</p>' : ''}
             </div>
           </div>`;
@@ -2759,7 +2759,7 @@ async function loadEarnings() {
             <p style="font-size:0.82rem;color:#849495;">${esc(j.service)} · ${fmt_date(j.booking_date || j.date)}</p>
           </div>
           <div style="display:flex;align-items:center;gap:0.75rem;">
-            <p style="font-size:1.05rem;font-weight:800;color:${j.status==='completed'?'#4ade80':'#fbbf24'};">${fmt_usd(j.amount)}</p>
+            <p style="font-size:1.05rem;font-weight:800;color:${j.status==="completed'?'#4ade80':'#fbbf24'};">${fmt_usd(j.amount)}</p>
             ${badge(j.status)}
           </div>
         </div>`).join('');

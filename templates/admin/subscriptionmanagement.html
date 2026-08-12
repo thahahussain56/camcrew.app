@@ -457,7 +457,7 @@
         const tier  = ROLE_TIER[u.role]||u.role;
         const style = TIER_STYLE[tier]||'background:rgba(0,0,0,0.07);color:#334155;';
         const ini   = initials(u.display_name||u.email);
-        return `<tr class="neu-row transition-colors" style="${i<arr.length-1?'border-bottom:1px solid rgba(0,0,0,0.06);':''}">
+        return `<tr class="neu-row transition-colors" style="${i<arr.length-1?"border-bottom:1px solid rgba(0,0,0,0.06);':''}">
           <td class="px-6 py-5">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-lg flex items-center justify-center neu-btn" style="font-size:0.8rem;font-weight:800;color:#006970;">${ini}</div>

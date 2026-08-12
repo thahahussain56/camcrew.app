@@ -874,10 +874,10 @@
       <div style="height:1px;background:rgba(0,0,0,0.07);border-radius:1px;margin:0.5rem 0 1.25rem;"></div>
       <!-- Actions -->
       <div style="display:flex;gap:0.85rem;justify-content:flex-end;align-items:center;">
-        <button type="button" id="cancel-modal-btn" style="background:var(--neu-bg);box-shadow:5px 5px 10px var(--neu-shadow-dark),-5px -5px 10px var(--neu-shadow-light);border:none;border-radius:0.75rem;padding:0.7rem 1.5rem;font-size:0.88rem;font-weight:700;color:#475569;font-family:'Plus Jakarta Sans',sans-serif;display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.color='#334155';this.style.boxShadow='7px 7px 14px var(--neu-shadow-dark),-7px -7px 14px var(--neu-shadow-light)'" onmouseout="this.style.color='#475569';this.style.boxShadow='5px 5px 10px var(--neu-shadow-dark),-5px -5px 10px var(--neu-shadow-light)'" onmousedown="this.style.boxShadow='inset 4px 4px 8px var(--neu-shadow-dark),inset -4px -4px 8px var(--neu-shadow-light)'" onmouseup="this.style.boxShadow='5px 5px 10px var(--neu-shadow-dark),-5px -5px 10px var(--neu-shadow-light)'">
+        <button type="button" id="cancel-modal-btn" style="background:var(--neu-bg);box-shadow:5px 5px 10px var(--neu-shadow-dark),-5px -5px 10px var(--neu-shadow-light);border:none;border-radius:0.75rem;padding:0.7rem 1.5rem;font-size:0.88rem;font-weight:700;color:#475569;font-family:"Plus Jakarta Sans',sans-serif;display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.color='#334155';this.style.boxShadow='7px 7px 14px var(--neu-shadow-dark),-7px -7px 14px var(--neu-shadow-light)'" onmouseout="this.style.color='#475569';this.style.boxShadow='5px 5px 10px var(--neu-shadow-dark),-5px -5px 10px var(--neu-shadow-light)'" onmousedown="this.style.boxShadow='inset 4px 4px 8px var(--neu-shadow-dark),inset -4px -4px 8px var(--neu-shadow-light)'" onmouseup="this.style.boxShadow='5px 5px 10px var(--neu-shadow-dark),-5px -5px 10px var(--neu-shadow-light)'">
           <span class="material-symbols-outlined" style="font-size:1rem;">close</span> Cancel
         </button>
-        <button type="submit" id="pf-submit-btn" style="background:linear-gradient(135deg,#006970,#00838f);color:#fff;box-shadow:5px 5px 14px rgba(0,105,112,0.4),-2px -2px 8px rgba(255,255,255,0.08);border:none;border-radius:0.75rem;padding:0.7rem 1.8rem;font-size:0.88rem;font-weight:800;letter-spacing:0.02em;font-family:'Plus Jakarta Sans',sans-serif;display:inline-flex;align-items:center;gap:7px;cursor:pointer;transition:all 0.18s;" onmouseover="this.style.boxShadow='7px 7px 18px rgba(0,105,112,0.5),-2px -2px 8px rgba(255,255,255,0.1)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='5px 5px 14px rgba(0,105,112,0.4),-2px -2px 8px rgba(255,255,255,0.08)';this.style.transform='translateY(0)'" onmousedown="this.style.transform='translateY(0)';this.style.boxShadow='inset 3px 3px 8px rgba(0,0,0,0.2)'" onmouseup="this.style.boxShadow='5px 5px 14px rgba(0,105,112,0.4),-2px -2px 8px rgba(255,255,255,0.08)'">
+        <button type="submit" id="pf-submit-btn" style="background:linear-gradient(135deg,#006970,#00838f);color:#fff;box-shadow:5px 5px 14px rgba(0,105,112,0.4),-2px -2px 8px rgba(255,255,255,0.08);border:none;border-radius:0.75rem;padding:0.7rem 1.8rem;font-size:0.88rem;font-weight:800;letter-spacing:0.02em;font-family:"Plus Jakarta Sans',sans-serif;display:inline-flex;align-items:center;gap:7px;cursor:pointer;transition:all 0.18s;" onmouseover="this.style.boxShadow='7px 7px 18px rgba(0,105,112,0.5),-2px -2px 8px rgba(255,255,255,0.1)';this.style.transform='translateY(-1px)'" onmouseout="this.style.boxShadow='5px 5px 14px rgba(0,105,112,0.4),-2px -2px 8px rgba(255,255,255,0.08)';this.style.transform='translateY(0)'" onmousedown="this.style.transform='translateY(0)';this.style.boxShadow='inset 3px 3px 8px rgba(0,0,0,0.2)'" onmouseup="this.style.boxShadow='5px 5px 14px rgba(0,105,112,0.4),-2px -2px 8px rgba(255,255,255,0.08)'">
           <span id="pf-submit-icon" class="material-symbols-outlined" style="font-size:1.1rem;">add_box</span>
           <span id="pf-submit-label">Add Product</span>
         </button>
@@ -1018,7 +1018,7 @@ function pfResetBadgeChips(val) {
 <!-- Floating Action Button (Admin Helper) -->
 <div class="fixed bottom-10 right-10 z-50">
   <button onclick="document.getElementById('fab-menu').classList.toggle('hidden')" class="w-14 h-14 rounded-full flex items-center justify-center shimmer-effect neu-fab focus:outline-none border-none" style="color:#006970;">
-    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+    <span class="material-symbols-outlined" style="font-variation-settings: "FILL' 1;">bolt</span>
   </button>
   <div id="fab-menu" class="hidden absolute bottom-16 right-0 mb-4 w-56 glass-panel rounded-2xl overflow-hidden shadow-2xl border border-black/5 dark:border-white/5 transition-opacity">
     <div class="p-2 flex flex-col gap-1">
@@ -1353,7 +1353,7 @@ function pfResetBadgeChips(val) {
       tbody.innerHTML = users.slice(0,5).map((u,i,arr) => {
         const tier  = ROLE_TIER[u.role] || u.role;
         const style = TIER_STYLE[tier]  || 'background:rgba(0,0,0,0.07);color:#334155;';
-        return `<tr class="neu-row transition-colors" style="${i<arr.length-1?'border-bottom:1px solid rgba(0,0,0,0.06);':''}">
+        return `<tr class="neu-row transition-colors" style="${i<arr.length-1?"border-bottom:1px solid rgba(0,0,0,0.06);':''}">
           <td class="px-8 py-6">
             <p style="font-size:0.95rem;font-weight:800;color:#0f172a;">${u.display_name||u.email}</p>
             <p style="font-size:0.78rem;color:#475569;margin-top:2px;">${u.email}</p>

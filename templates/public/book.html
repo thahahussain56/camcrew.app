@@ -413,7 +413,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cur
       <!-- Info -->
       <div class="flex-1 min-w-0">
         <span class="inline-flex items-center gap-1.5 text-xs font-bold text-primary-container uppercase tracking-widest mb-2 bg-primary-container/10 px-3 py-1 rounded-full border border-primary-container/20">
-          <span class="material-symbols-outlined text-xs" style="font-variation-settings:'FILL' 1">calendar_month</span>
+          <span class="material-symbols-outlined text-xs" style="font-variation-settings:"FILL' 1">calendar_month</span>
           Book a Service
         </span>
         <h1 class="text-3xl md:text-4xl font-black text-white mt-1 leading-tight tracking-tight" id="page-title">Loading…</h1>
@@ -636,7 +636,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cur
             <label class="cc-label text-xs mb-1" for="contract-signature-inp">
               Digital Signature (Type Full Legal Name) <span class="text-red-400">*</span>
             </label>
-            <input type="text" id="contract-signature-inp" placeholder="e.g. Rahul Sharma" class="cc-input text-sm font-semibold tracking-wide" style="font-family:'Plus Jakarta Sans',sans-serif;"/>
+            <input type="text" id="contract-signature-inp" placeholder="e.g. Rahul Sharma" class="cc-input text-sm font-semibold tracking-wide" style="font-family:"Plus Jakarta Sans',sans-serif;"/>
           </div>
         </div>
 
@@ -667,7 +667,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cur
               <p class="text-white font-black truncate" id="sum-name">—</p>
               <p class="text-primary-container text-xs font-semibold truncate" id="sum-title">—</p>
             </div>
-            <span class="material-symbols-outlined text-primary-container/50 text-2xl" style="font-variation-settings:'FILL' 1">verified</span>
+            <span class="material-symbols-outlined text-primary-container/50 text-2xl" style="font-variation-settings:"FILL' 1">verified</span>
           </div>
 
           <!-- Date / Time / Venue / Event row -->
@@ -727,7 +727,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cur
         <div class="flex justify-between">
           <button onclick="goStep(2)" class="btn-ghost"><span class="material-symbols-outlined text-sm">arrow_back</span> Back</button>
           <button id="confirm-btn" onclick="confirmBooking()" class="btn-primary">
-            <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">check_circle</span>
+            <span class="material-symbols-outlined text-sm" style="font-variation-settings:"FILL' 1">check_circle</span>
             Confirm Booking
           </button>
         </div>
@@ -743,7 +743,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cur
           <div class="success-icon relative z-10 w-24 h-24 rounded-full flex items-center justify-center"
                style="background:radial-gradient(circle,rgba(0,240,255,0.18) 0%,rgba(0,240,255,0.04) 70%);border:1.5px solid rgba(0,240,255,0.3);box-shadow:0 0 70px rgba(0,240,255,0.3)">
             <div class="success-ring"></div>
-            <span class="material-symbols-outlined text-primary-container text-5xl" style="font-variation-settings:'FILL' 1">check_circle</span>
+            <span class="material-symbols-outlined text-primary-container text-5xl" style="font-variation-settings:"FILL' 1">check_circle</span>
           </div>
         </div>
 
@@ -836,7 +836,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); cur
 
       <!-- Trust badge -->
       <div class="mt-4 px-4 py-3 rounded-xl border border-white/05 flex items-center gap-2.5" style="background:rgba(0,240,255,0.02)">
-        <span class="material-symbols-outlined text-primary-container/60 text-sm" style="font-variation-settings:'FILL' 1">shield</span>
+        <span class="material-symbols-outlined text-primary-container/60 text-sm" style="font-variation-settings:"FILL' 1">shield</span>
         <p class="text-xs text-on-surface-variant/50">No payment now — confirm first, pay later.</p>
       </div>
     </aside>
@@ -1015,7 +1015,7 @@ function renderServices() {
           <div class="flex items-center gap-3">
             <!-- Inline checkbox -->
             <div class="svc-box flex-shrink-0">
-              <span class="material-symbols-outlined" style="font-size:0.75rem;font-variation-settings:'FILL' 1,'wght' 700">check</span>
+              <span class="material-symbols-outlined" style="font-size:0.75rem;font-variation-settings:"FILL' 1,'wght' 700">check</span>
             </div>
             <!-- Icon badge -->
             <div class="icon-badge flex-shrink-0">
@@ -1230,7 +1230,7 @@ function goStep(n) {
     dot.className  = 'step-dot ' + (i < n ? 'done' : i === n ? 'active' : '');
     item.className = 'step-item ' + (i < n ? 'is-done' : i === n ? 'is-active' : '');
     dot.innerHTML  = i < n
-      ? '<span class="material-symbols-outlined text-sm" style="font-variation-settings:\'FILL\' 1">check</span>'
+      ? '<span class="material-symbols-outlined text-sm" style="font-variation-settings:\"FILL\' 1">check</span>'
       : String(i + 1);
     if (line) line.className = 'step-connector ' + (i < n ? 'is-done' : '');
   }
@@ -1433,7 +1433,7 @@ async function confirmBooking() {
       errEl.classList.remove('hidden');
       errEl.style.display = 'flex';
       btn.disabled = false;
-      btn.innerHTML = `<span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">check_circle</span> Confirm Booking`;
+      btn.innerHTML = `<span class="material-symbols-outlined text-sm" style="font-variation-settings:"FILL' 1">check_circle</span> Confirm Booking`;
       return;
     }
 
@@ -1458,7 +1458,7 @@ async function confirmBooking() {
     errEl.classList.remove('hidden');
     errEl.style.display = 'flex';
     btn.disabled = false;
-    btn.innerHTML = `<span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">check_circle</span> Confirm Booking`;
+    btn.innerHTML = `<span class="material-symbols-outlined text-sm" style="font-variation-settings:"FILL' 1">check_circle</span> Confirm Booking`;
   }
 }
 
