@@ -762,7 +762,7 @@ def init_professional_tables():
 
         # Cleanup migration: reset avatar_url to '' for any stale /uploads/ paths whose files no longer exist on ephemeral disk
         try:
-            stale_rows = conn.execute("SELECT user_id, avatar_url FROM professional_profiles WHERE avatar_url LIKE '/uploads/%'").fetchall()
+            stale_rows = conn.execute("SELECT user_id, avatar_url FROM professional_profiles WHERE avatar_url LIKE %s", ('/uploads/%',)).fetchall()
             for r in stale_rows:
                 rel_path = (r["avatar_url"] or "").lstrip("/")
                 abs_path = os.path.join(ROOT_DIR, rel_path)
