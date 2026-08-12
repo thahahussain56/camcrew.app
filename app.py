@@ -92,7 +92,7 @@ class _DBConn:
     Enforces Indian Standard Time (IST / Asia/Kolkata / UTC+5:30) across all DB sessions.
     """
     def __init__(self):
-        url = os.environ.get("RENDER_DATABASE_URL") or os.environ.get("DATABASE_URL") or DEFAULT_DATABASE_URL
+        url = os.environ.get("RENDER_DATABASE_URL") or os.environ.get("DATABASE_URL")
         if url and "sslmode" not in url and ("postgres.render.com" in url or "render.com" in url):
             url += "?sslmode=require" if "?" not in url else "&sslmode=require"
         self._is_sqlite = False
